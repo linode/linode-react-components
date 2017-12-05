@@ -1,0 +1,13 @@
+.StyleguideSection {
+  padding: 0 20px;
+  margin-bottom: 24px;
+  width: 100%;
+
+  & > h2 {
+    padding: 10px 15px;
+  }
+
+  h3 {
+    padding: 10px 0;
+  }
+}
