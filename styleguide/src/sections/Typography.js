@@ -107,22 +107,30 @@ export default function Typography() {
                 <tr className="TableRow">
                   <td className="TableCell"><strong>Bold Text</strong></td>
                   <td className="TableCell">15px; (1.5 rem); $font-normal;</td>
-                  <td className="TableCell">Use the <code>&lt;strong&gt;</code> tag for <strong>Bold Text</strong></td>
+                  <td className="TableCell">
+                    Use the <code>&lt;strong&gt;</code> tag for <strong>Bold Text</strong>
+                  </td>
                 </tr>
                 <tr className="TableRow">
                   <td className="TableCell"><em>Italic Text</em></td>
                   <td className="TableCell">15px; (1.5 rem); $font-normal;</td>
-                  <td className="TableCell">Use the <code>&lt;em&gt;</code> tag for <em>Italic Text</em></td>
+                  <td className="TableCell">
+                    Use the <code>&lt;em&gt;</code> tag for <em>Italic Text</em>
+                  </td>
                 </tr>
                 <tr className="TableRow">
                   <td className="TableCell"><small>Small Text</small></td>
                   <td className="TableCell">12px; (1.2 rem); $font-small;</td>
-                  <td className="TableCell">Use the <code>&lt;small&gt;</code> tag for <small>Small Text</small></td>
+                  <td className="TableCell">
+                    Use the <code>&lt;small&gt;</code> tag for <small>Small Text</small>
+                  </td>
                 </tr>
                 <tr className="TableRow">
                   <td className="TableCell"><a href="#">Hyperlink</a></td>
                   <td className="TableCell">15px; (1.5 rem); $font-normal;</td>
-                  <td className="TableCell">Links use $blue ( #4A90E2 ) and are only underlined on hover.</td>
+                  <td className="TableCell">
+                    Links use $blue ( #4A90E2 ) and are only underlined on hover.
+                  </td>
                 </tr>
               </tbody>
             </table>

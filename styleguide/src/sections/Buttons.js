@@ -43,7 +43,7 @@ export default function Buttons() {
             <h3>Dropdown</h3>
             <p>
               Example:
-              <Dropdown groups={[ { elements: [{ name: 'test' }] } ]} />
+              <Dropdown groups={[{ elements: [{ name: 'test' }] }]} />
             </p>
             <p>
               This dropdown is for links and actions outside of forms.

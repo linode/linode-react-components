@@ -1,9 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
 import { Header } from 'linode-components/navigation';
 import StyleguideNav from './StyleguideNav';
-
 
 export default function StyleguideIndex(props) {
   return (
@@ -22,3 +22,7 @@ export default function StyleguideIndex(props) {
     </div>
   );
 }
+
+StyleguideIndex.propTypes = {
+  children: PropTypes.node,
+};
