@@ -7,6 +7,7 @@ export default function Card(props) {
     <div className={`Card ${props.className}`} id={props.id}>
       {props.header}
       <div className="Card-body">
+        Pinned Card!
         {props.children}
       </div>
     </div>
