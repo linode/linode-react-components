@@ -22,6 +22,7 @@
     "react-tooltip": "^3.3.0"
   },
   "devDependencies": {
+    "babel-eslint": "^6.1.2",
     "eslint": "^2.13.1",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-babel": "^3.3.0",
