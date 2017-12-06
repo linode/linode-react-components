@@ -1,37 +1,67 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = FormSummary;
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function FormSummary(props) {
+  var className = props.className,
+      errors = props.errors,
+      success = props.success;
 
 
-export default function FormSummary(props) {
-  const { className, errors, success } = props;
-
-  let content;
+  var content = void 0;
   if (errors._ && errors._.length) {
-    content = (
-      <div className="alert alert-danger">
-        {errors._.map(error => {
-          const text = error.reason || error;
-          return (<div key={text}>{text}</div>);
-        })}
-      </div>
+    content = _react2.default.createElement(
+      'div',
+      { className: 'alert alert-danger' },
+      errors._.map(function (error) {
+        var text = error.reason || error;
+        return _react2.default.createElement(
+          'div',
+          { key: text },
+          text
+        );
+      })
     );
   } else if (Object.keys(errors).length > 1) {
-    content = <div className="alert alert-danger">Please fix all errors before retrying.</div>;
+    content = _react2.default.createElement(
+      'div',
+      { className: 'alert alert-danger' },
+      'Please fix all errors before retrying.'
+    );
   } else if (errors._) {
-    content = success ? <div className="alert alert-success">{success}</div> : '';
+    content = success ? _react2.default.createElement(
+      'div',
+      { className: 'alert alert-success' },
+      success
+    ) : '';
   }
 
-  return (
-    <div className={`FormSummary ${className}`}>{content}</div>
+  return _react2.default.createElement(
+    'div',
+    { className: 'FormSummary ' + className },
+    content
   );
 }
 
 FormSummary.propTypes = {
-  errors: PropTypes.object.isRequired,
-  success: PropTypes.string,
-  className: PropTypes.string,
+  errors: _propTypes2.default.object.isRequired,
+  success: _propTypes2.default.string,
+  className: _propTypes2.default.string
 };
 
 FormSummary.defaultProps = {
-  className: '',
+  className: ''
 };

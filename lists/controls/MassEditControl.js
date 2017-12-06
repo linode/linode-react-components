@@ -1,81 +1,148 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+'use strict';
 
-import MassEditDropdown from './MassEditDropdown';
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-export default class MassEditControl extends Component {
-  onMassEditChange = () => {
-    const {
-      data, dispatch, objectType, selectedMap, selectedKey, toggleSelected,
-    } = this.props;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-    const allSelected = this.allSelected();
-    const noneSelected = this.noneSelected();
-    const indeterminate = !allSelected && !noneSelected;
+var _react = require('react');
 
-    let selected = data;
+var _react2 = _interopRequireDefault(_react);
 
-    // Uncheck all those that have been unchecked if in indeterminate state.
-    if (indeterminate) {
-      selected = selected.filter((record) => {
-        return selectedMap[record[selectedKey]];
-      });
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _MassEditDropdown = require('./MassEditDropdown');
+
+var _MassEditDropdown2 = _interopRequireDefault(_MassEditDropdown);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var MassEditControl = function (_Component) {
+  _inherits(MassEditControl, _Component);
+
+  function MassEditControl() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, MassEditControl);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
     }
 
-    selected = selected.map(function (record) { return record[selectedKey]; });
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = MassEditControl.__proto__ || Object.getPrototypeOf(MassEditControl)).call.apply(_ref, [this].concat(args))), _this), _this.onMassEditChange = function () {
+      var _this$props = _this.props,
+          data = _this$props.data,
+          dispatch = _this$props.dispatch,
+          objectType = _this$props.objectType,
+          selectedMap = _this$props.selectedMap,
+          selectedKey = _this$props.selectedKey,
+          toggleSelected = _this$props.toggleSelected;
 
-    dispatch(toggleSelected(objectType, selected));
+
+      var allSelected = _this.allSelected();
+      var noneSelected = _this.noneSelected();
+      var indeterminate = !allSelected && !noneSelected;
+
+      var selected = data;
+
+      // Uncheck all those that have been unchecked if in indeterminate state.
+      if (indeterminate) {
+        selected = selected.filter(function (record) {
+          return selectedMap[record[selectedKey]];
+        });
+      }
+
+      selected = selected.map(function (record) {
+        return record[selectedKey];
+      });
+
+      dispatch(toggleSelected(objectType, selected));
+    }, _this.allSelected = function () {
+      return _this.props.data.every(function (record) {
+        return _this.props.selectedMap[record[_this.props.selectedKey]];
+      });
+    }, _this.noneSelected = function () {
+      return Object.keys(_this.props.selectedMap).length === 0;
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
-  allSelected = () => this.props.data.every((record) =>
-    this.props.selectedMap[record[this.props.selectedKey]])
+  _createClass(MassEditControl, [{
+    key: 'createMassEditActionHandler',
+    value: function createMassEditActionHandler(fn) {
+      var _this2 = this;
 
-  createMassEditActionHandler(fn) {
-    return () => {
-      const { data, selectedMap, selectedKey } = this.props;
-      const filteredData = data.filter((record) => { return selectedMap[record[selectedKey]]; });
+      return function () {
+        var _props = _this2.props,
+            data = _props.data,
+            selectedMap = _props.selectedMap,
+            selectedKey = _props.selectedKey;
 
-      fn(filteredData);
-    };
-  }
+        var filteredData = data.filter(function (record) {
+          return selectedMap[record[selectedKey]];
+        });
 
-  noneSelected = () => (Object.keys(this.props.selectedMap).length === 0)
+        fn(filteredData);
+      };
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this3 = this;
 
-  render() {
-    const { massEditGroups } = this.props;
+      var massEditGroups = this.props.massEditGroups;
 
-    const allSelected = this.allSelected();
-    const noneSelected = this.noneSelected();
 
-    return (
-      <MassEditDropdown
-        checked={allSelected && !noneSelected}
-        indeterminate={!allSelected && !noneSelected}
-        disabled={noneSelected}
-        groups={massEditGroups.map((group) => ({
-          ...group,
-          elements: group.elements.map((option) => ({
-            name: option.name,
-            action: this.createMassEditActionHandler(option.action),
-          })),
-        }))}
-        onChange={this.onMassEditChange}
-      />
-    );
-  }
-}
+      var allSelected = this.allSelected();
+      var noneSelected = this.noneSelected();
+
+      return _react2.default.createElement(_MassEditDropdown2.default, {
+        checked: allSelected && !noneSelected,
+        indeterminate: !allSelected && !noneSelected,
+        disabled: noneSelected,
+        groups: massEditGroups.map(function (group) {
+          return _extends({}, group, {
+            elements: group.elements.map(function (option) {
+              return {
+                name: option.name,
+                action: _this3.createMassEditActionHandler(option.action)
+              };
+            })
+          });
+        }),
+        onChange: this.onMassEditChange
+      });
+    }
+  }]);
+
+  return MassEditControl;
+}(_react.Component);
+
+exports.default = MassEditControl;
+
 
 MassEditControl.propTypes = {
-  data: PropTypes.array.isRequired,
-  dispatch: PropTypes.func,
-  massEditGroups: MassEditDropdown.propTypes.groups,
-  objectType: PropTypes.string.isRequired,
-  selectedKey: PropTypes.string,
-  selectedMap: PropTypes.object.isRequired,
-  toggleSelected: PropTypes.func,
+  data: _propTypes2.default.array.isRequired,
+  dispatch: _propTypes2.default.func,
+  massEditGroups: _MassEditDropdown2.default.propTypes.groups,
+  objectType: _propTypes2.default.string.isRequired,
+  selectedKey: _propTypes2.default.string,
+  selectedMap: _propTypes2.default.object.isRequired,
+  toggleSelected: _propTypes2.default.func
 };
 
 MassEditControl.defaultProps = {
-  selectedKey: 'id',
+  selectedKey: 'id'
 };
