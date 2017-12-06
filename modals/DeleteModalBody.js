@@ -1,82 +1,144 @@
-import _ from 'lodash';
-import PropTypes from 'prop-types';
-import React from 'react';
+'use strict';
 
-import FormModalBody from './FormModalBody';
-import { ScrollingList } from '../lists';
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = DeleteModalBody;
+
+var _lodash = require('lodash');
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _FormModalBody = require('./FormModalBody');
+
+var _FormModalBody2 = _interopRequireDefault(_FormModalBody);
+
+var _lists = require('../lists');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function DeleteModalBody(props) {
+  var onSubmit = props.onSubmit,
+      items = props.items,
+      onCancel = props.onCancel,
+      typeOfItem = props.typeOfItem,
+      deleteAction = props.deleteAction,
+      deleteActionPending = props.deleteActionPending;
 
 
-export default function DeleteModalBody(props) {
-  const {
-    onSubmit,
-    items,
-    onCancel,
-    typeOfItem,
-    deleteAction,
-    deleteActionPending,
-  } = props;
-
-  const groupedItems = _.groupBy(items);
-  const groupedDOMItems = _.map(groupedItems, function (items, label) {
+  var groupedItems = _lodash2.default.groupBy(items);
+  var groupedDOMItems = _lodash2.default.map(groupedItems, function (items, label) {
     if (items.length > 1) {
-      return <span><strong>{label}</strong> (x{items.length})</span>;
+      return _react2.default.createElement(
+        'span',
+        null,
+        _react2.default.createElement(
+          'strong',
+          null,
+          label
+        ),
+        ' (x',
+        items.length,
+        ')'
+      );
     }
 
-    return <strong>{label}</strong>;
+    return _react2.default.createElement(
+      'strong',
+      null,
+      label
+    );
   });
 
-  let body;
+  var body = void 0;
   if (groupedDOMItems.length > 1) {
-    body = (
-      <div>
-        <p>
-          {/* eslint-disable max-len */}
-          Are you sure you want to <strong>permanently</strong> {deleteAction} these {items.length} {typeOfItem}?
-          {/* eslint-enable max-len */}
-        </p>
-        <ScrollingList items={groupedDOMItems} />
-        <p>This operation cannot be undone.</p>
-      </div>
+    body = _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(
+        'p',
+        null,
+        'Are you sure you want to ',
+        _react2.default.createElement(
+          'strong',
+          null,
+          'permanently'
+        ),
+        ' ',
+        deleteAction,
+        ' these ',
+        items.length,
+        ' ',
+        typeOfItem,
+        '?'
+      ),
+      _react2.default.createElement(_lists.ScrollingList, { items: groupedDOMItems }),
+      _react2.default.createElement(
+        'p',
+        null,
+        'This operation cannot be undone.'
+      )
     );
   } else {
-    let domItem = groupedDOMItems[0];
-    domItem = React.isValidElement(domItem) ? domItem : <strong>{domItem}</strong>;
+    var domItem = groupedDOMItems[0];
+    domItem = _react2.default.isValidElement(domItem) ? domItem : _react2.default.createElement(
+      'strong',
+      null,
+      domItem
+    );
 
-    body = (
-      <p>
-        Are you sure you want
-        to <strong>permanently</strong> {deleteAction} {domItem}?
-      </p>
+    body = _react2.default.createElement(
+      'p',
+      null,
+      'Are you sure you want to ',
+      _react2.default.createElement(
+        'strong',
+        null,
+        'permanently'
+      ),
+      ' ',
+      deleteAction,
+      ' ',
+      domItem,
+      '?'
     );
   }
 
-  const title = `Delete ${typeOfItem}`;
-  const analytics = { title, action: 'delete' };
+  var title = 'Delete ' + typeOfItem;
+  var analytics = { title: title, action: 'delete' };
 
-  return (
-    <FormModalBody
-      className="DeleteModalBody"
-      buttonText={_.capitalize(deleteAction)}
-      buttonDisabledText={_.capitalize(deleteActionPending)}
-      onSubmit={onSubmit}
-      onCancel={onCancel}
-      analytics={analytics}
-    >
-      {body}
-    </FormModalBody>
+  return _react2.default.createElement(
+    _FormModalBody2.default,
+    {
+      className: 'DeleteModalBody',
+      buttonText: _lodash2.default.capitalize(deleteAction),
+      buttonDisabledText: _lodash2.default.capitalize(deleteActionPending),
+      onSubmit: onSubmit,
+      onCancel: onCancel,
+      analytics: analytics
+    },
+    body
   );
 }
 
 DeleteModalBody.propTypes = {
-  onSubmit: PropTypes.func,
-  items: PropTypes.arrayOf(PropTypes.node),
-  onCancel: PropTypes.func,
-  typeOfItem: PropTypes.string.isRequired,
-  deleteAction: PropTypes.string.isRequired,
-  deleteActionPending: PropTypes.string.isRequired,
+  onSubmit: _propTypes2.default.func,
+  items: _propTypes2.default.arrayOf(_propTypes2.default.node),
+  onCancel: _propTypes2.default.func,
+  typeOfItem: _propTypes2.default.string.isRequired,
+  deleteAction: _propTypes2.default.string.isRequired,
+  deleteActionPending: _propTypes2.default.string.isRequired
 };
 
 DeleteModalBody.defaultProps = {
   deleteAction: 'delete',
-  deleteActionPending: 'deleting',
+  deleteActionPending: 'deleting'
 };

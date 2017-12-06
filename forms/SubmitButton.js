@@ -1,30 +1,46 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+'use strict';
 
-import { Button } from 'linode-components/buttons';
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = SubmitButton;
 
-export default function SubmitButton(props) {
-  return (
-    <Button
-      type="submit"
-      className={`btn ${props.className}`}
-      disabled={props.disabled}
-      onClick={props.onClick}
-    >{props.disabled ? props.disabledChildren : props.children}</Button>
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _buttons = require('../buttons');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function SubmitButton(props) {
+  return _react2.default.createElement(
+    _buttons.Button,
+    {
+      type: 'submit',
+      className: 'btn ' + props.className,
+      disabled: props.disabled,
+      onClick: props.onClick
+    },
+    props.disabled ? props.disabledChildren : props.children
   );
 }
 
 SubmitButton.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  disabled: PropTypes.bool,
-  disabledChildren: PropTypes.string,
-  onClick: PropTypes.func,
+  children: _propTypes2.default.node,
+  className: _propTypes2.default.string,
+  disabled: _propTypes2.default.bool,
+  disabledChildren: _propTypes2.default.string,
+  onClick: _propTypes2.default.func
 };
 
 SubmitButton.defaultProps = {
   children: 'Save',
   disabledChildren: 'Saving',
   className: 'btn-default',
-  disabled: false,
+  disabled: false
 };

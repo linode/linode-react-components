@@ -1,37 +1,55 @@
-import _ from 'lodash';
-import PropTypes from 'prop-types';
-import React from 'react';
+'use strict';
 
-export default function FormGroup(props) {
-  const { errors, name, crumbs } = props;
-  let fieldErrors;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = FormGroup;
+
+var _lodash = require('lodash');
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function FormGroup(props) {
+  var errors = props.errors,
+      name = props.name,
+      crumbs = props.crumbs;
+
+  var fieldErrors = void 0;
   if (errors && name) {
-    const names = Array.isArray(name) ? name : [name];
-    const crumb = (crumbs ? `.${crumbs}` : '');
-    fieldErrors = _.flatten(names.map(function (name) {
-      return errors[`${name}${crumb}`] || [];
+    var names = Array.isArray(name) ? name : [name];
+    var crumb = crumbs ? '.' + crumbs : '';
+    fieldErrors = _lodash2.default.flatten(names.map(function (name) {
+      return errors['' + name + crumb] || [];
     }));
   }
 
-  return (
-    <div
-      className={`form-group ${
-        fieldErrors && fieldErrors.length ? 'has-danger' : ''
-      } ${props.className}`}
-    >
-      {props.children}
-    </div>
+  return _react2.default.createElement(
+    'div',
+    {
+      className: 'form-group ' + (fieldErrors && fieldErrors.length ? 'has-danger' : '') + ' ' + props.className
+    },
+    props.children
   );
 }
 
 FormGroup.propTypes = {
-  errors: PropTypes.any,
-  name: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]).isRequired,
-  crumbs: PropTypes.string,
-  className: PropTypes.string,
-  children: PropTypes.node,
+  errors: _propTypes2.default.any,
+  name: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.arrayOf(_propTypes2.default.string)]).isRequired,
+  crumbs: _propTypes2.default.string,
+  className: _propTypes2.default.string,
+  children: _propTypes2.default.node
 };
 
 FormGroup.defaultProps = {
-  className: '',
+  className: ''
 };

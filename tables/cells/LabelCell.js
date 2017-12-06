@@ -1,22 +1,40 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = LabelCell;
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _tooltips = require('../../tooltips');
+
+var _TableCell = require('./TableCell');
+
+var _TableCell2 = _interopRequireDefault(_TableCell);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function LabelCell(props) {
+  var cellIndex = props.cellIndex,
+      column = props.column,
+      record = props.record;
+  var _column$className = column.className,
+      className = _column$className === undefined ? '' : _column$className,
+      textFn = column.textFn,
+      _column$dataKey = column.dataKey,
+      dataKey = _column$dataKey === undefined ? 'name' : _column$dataKey,
+      _column$tooltipEnable = column.tooltipEnabled,
+      tooltipEnabled = _column$tooltipEnable === undefined ? false : _column$tooltipEnable;
 
 
-import { Tooltip } from '../../tooltips';
-
-import TableCell from './TableCell';
-
-
-export default function LabelCell(props) {
-  const { cellIndex, column, record } = props;
-  const {
-    className = '',
-    textFn,
-    dataKey = 'name',
-    tooltipEnabled = false,
-  } = column;
-
-  let children = props.children;
+  var children = props.children;
   if (!children) {
     if (textFn) {
       children = textFn(record);
@@ -25,47 +43,60 @@ export default function LabelCell(props) {
     }
   }
 
-  const idText = record.id ? (<div>ID: {record.id}</div>) : null;
-  let tooltipComponent;
-  let tooltipAttributes;
-  let tooltipEnabledClass = '';
+  var idText = record.id ? _react2.default.createElement(
+    'div',
+    null,
+    'ID: ',
+    record.id
+  ) : null;
+  var tooltipComponent = void 0;
+  var tooltipAttributes = void 0;
+  var tooltipEnabledClass = '';
   if (tooltipEnabled) {
-    const tooltipId = `tooltip-${record.id}-${cellIndex}`;
-    const tooltipText = (
-      <div>
-        <div>
-          {children}
-        </div>
-        {idText}
-      </div>
+    var tooltipId = 'tooltip-' + record.id + '-' + cellIndex;
+    var tooltipText = _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(
+        'div',
+        null,
+        children
+      ),
+      idText
     );
 
     tooltipEnabledClass = 'TooltipEnabled';
     tooltipAttributes = { 'data-tip': true, 'data-for': tooltipId };
-    tooltipComponent = (
-      <Tooltip id={tooltipId}>{tooltipText}</Tooltip>
+    tooltipComponent = _react2.default.createElement(
+      _tooltips.Tooltip,
+      { id: tooltipId },
+      tooltipText
     );
   }
 
-  return (
-    <TableCell
-      cellIndex={cellIndex}
-      className={`LabelCell ${className} ${tooltipEnabledClass}`}
-      column={column}
-      record={record}
-    >
-      <span {...tooltipAttributes}>{children}</span>
-      {tooltipComponent}
-    </TableCell>
+  return _react2.default.createElement(
+    _TableCell2.default,
+    {
+      cellIndex: cellIndex,
+      className: 'LabelCell ' + className + ' ' + tooltipEnabledClass,
+      column: column,
+      record: record
+    },
+    _react2.default.createElement(
+      'span',
+      tooltipAttributes,
+      children
+    ),
+    tooltipComponent
   );
 }
 
 LabelCell.propTypes = {
-  cellIndex: PropTypes.number,
-  children: PropTypes.node,
-  className: PropTypes.string,
-  column: PropTypes.shape({
-    disableTooltip: PropTypes.bool,
+  cellIndex: _propTypes2.default.number,
+  children: _propTypes2.default.node,
+  className: _propTypes2.default.string,
+  column: _propTypes2.default.shape({
+    disableTooltip: _propTypes2.default.bool
   }),
-  record: PropTypes.object.isRequired,
+  record: _propTypes2.default.object.isRequired
 };

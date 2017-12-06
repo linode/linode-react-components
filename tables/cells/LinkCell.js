@@ -1,24 +1,49 @@
-import React from 'react';
-import { Link } from 'react-router';
-import PropTypes from 'prop-types';
+'use strict';
 
-import { Tooltip } from '../../tooltips';
-import TableCell from './TableCell';
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+exports.default = LinkCell;
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouter = require('react-router');
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _tooltips = require('../../tooltips');
+
+var _TableCell = require('./TableCell');
+
+var _TableCell2 = _interopRequireDefault(_TableCell);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function LinkCell(props) {
+  var cellIndex = props.cellIndex,
+      column = props.column,
+      record = props.record;
+  var _column$className = column.className,
+      className = _column$className === undefined ? '' : _column$className,
+      hrefFn = column.hrefFn,
+      _column$idKey = column.idKey,
+      idKey = _column$idKey === undefined ? 'id' : _column$idKey,
+      _column$textKey = column.textKey,
+      textKey = _column$textKey === undefined ? 'label' : _column$textKey,
+      textFn = column.textFn,
+      subtitleFn = column.subtitleFn,
+      _column$tooltipEnable = column.tooltipEnabled,
+      tooltipEnabled = _column$tooltipEnable === undefined ? false : _column$tooltipEnable;
 
 
-export default function LinkCell(props) {
-  const { cellIndex, column, record } = props;
-  const {
-    className = '',
-    hrefFn,
-    idKey = 'id',
-    textKey = 'label',
-    textFn,
-    subtitleFn,
-    tooltipEnabled = false,
-  } = column;
-
-  let children = props.children;
+  var children = props.children;
   if (!children) {
     if (textFn) {
       children = textFn(record);
@@ -27,56 +52,70 @@ export default function LinkCell(props) {
     }
   }
 
-  const name = record[textKey];
-  let tooltipComponent;
-  let tooltipAttributes;
-  let tooltipEnabledClass = '';
+  var name = record[textKey];
+  var tooltipComponent = void 0;
+  var tooltipAttributes = void 0;
+  var tooltipEnabledClass = '';
   if (tooltipEnabled) {
-    const tooltipId = `tooltip-${record[idKey]}-${cellIndex}`;
-    const idText = `ID: ${record[idKey]}`;
-    const tooltipText = (
-      <div>
-        <div>
-          {name}
-        </div>
-        {idText}
-      </div>
+    var tooltipId = 'tooltip-' + record[idKey] + '-' + cellIndex;
+    var idText = 'ID: ' + record[idKey];
+    var tooltipText = _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(
+        'div',
+        null,
+        name
+      ),
+      idText
     );
 
     tooltipEnabledClass = 'TooltipEnabled';
     tooltipAttributes = { 'data-tip': true, 'data-for': tooltipId };
-    tooltipComponent = (
-      <Tooltip id={tooltipId}>{tooltipText}</Tooltip>
+    tooltipComponent = _react2.default.createElement(
+      _tooltips.Tooltip,
+      { id: tooltipId },
+      tooltipText
     );
   }
 
-  return (
-    <TableCell
-      cellIndex={cellIndex}
-      className={`LinkCell ${className} ${tooltipEnabledClass}`}
-      column={column}
-      record={record}
-    >
-      <Link to={hrefFn(record)} {...tooltipAttributes}>
-        {children}
-      </Link>
-      {tooltipComponent}
-      {subtitleFn ? <div><small>{subtitleFn(record)}</small></div> : null}
-    </TableCell>
+  return _react2.default.createElement(
+    _TableCell2.default,
+    {
+      cellIndex: cellIndex,
+      className: 'LinkCell ' + className + ' ' + tooltipEnabledClass,
+      column: column,
+      record: record
+    },
+    _react2.default.createElement(
+      _reactRouter.Link,
+      _extends({ to: hrefFn(record) }, tooltipAttributes),
+      children
+    ),
+    tooltipComponent,
+    subtitleFn ? _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(
+        'small',
+        null,
+        subtitleFn(record)
+      )
+    ) : null
   );
 }
 
 LinkCell.propTypes = {
-  cellIndex: PropTypes.number,
-  children: PropTypes.node,
-  className: PropTypes.string,
-  column: PropTypes.shape({
-    disableTooltip: PropTypes.bool,
-    hrefFn: PropTypes.func.isRequired,
-    textKey: PropTypes.string,
+  cellIndex: _propTypes2.default.number,
+  children: _propTypes2.default.node,
+  className: _propTypes2.default.string,
+  column: _propTypes2.default.shape({
+    disableTooltip: _propTypes2.default.bool,
+    hrefFn: _propTypes2.default.func.isRequired,
+    textKey: _propTypes2.default.string,
     // TODO: consider generalizing textFn for formatting
-    textFn: PropTypes.func,
-    subtitleFn: PropTypes.func,
+    textFn: _propTypes2.default.func,
+    subtitleFn: _propTypes2.default.func
   }).isRequired,
-  record: PropTypes.object.isRequired,
+  record: _propTypes2.default.object.isRequired
 };
