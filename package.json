@@ -8,7 +8,8 @@
     "clean": "rm -rf breadcrumbs/ buttons/ cards/ dropdowns/ editors/ errors/ formats/ forms/ lists/ modals/ navigation/ tables/ tabs/ tooltips/ utils/",
     "lint": "eslint --max-warnings=0 .",
     "prebuild": "yarn run clean",
-    "build": "babel src/ --out-dir ./"
+    "build": "babel src/ --out-dir ./",
+    "install": "yarn run build"
   },
   "author": "",
   "license": "ISC",
