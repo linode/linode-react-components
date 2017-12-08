@@ -13,7 +13,7 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _dropdowns = require('linode-components/dropdowns');
+var _dropdowns = require('../../dropdowns');
 
 var _TableCell = require('./TableCell');
 
