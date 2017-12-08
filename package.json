@@ -5,7 +5,7 @@
   "description": "Shared UI Components",
   "main": "dist/index.js",
   "scripts": {
-    "clean": "rm -rf breadcrumbs/ buttons/ cards/ dropdowns/ editors/ errors/ formats/ forms/ lists/ modals/ navigation/ tables/ tabs/ tooltips/ utils/",
+    "clean": "rm -rf dist",
     "lint": "eslint --max-warnings=0 src",
     "prebuild": "yarn run clean",
     "build": "babel src/ --out-dir ./dist"
