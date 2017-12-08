@@ -148,4 +148,13 @@ Object.defineProperty(exports, 'Textarea', {
   }
 });
 
+var _utilities = require('./utilities');
+
+Object.defineProperty(exports, 'onChange', {
+  enumerable: true,
+  get: function get() {
+    return _utilities.onChange;
+  }
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

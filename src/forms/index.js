@@ -14,3 +14,4 @@ export { default as RadioInputCombo } from './RadioInputCombo';
 export { default as RadioSelectCombo } from './RadioSelectCombo';
 export { default as Checkboxes } from './Checkboxes';
 export { default as Textarea } from './Textarea';
+export { onChange } from './utilities';
