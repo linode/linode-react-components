@@ -1,7 +1,7 @@
 {
   "name": "linode-components",
   "private": true,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Shared UI Components",
   "main": "dist/index.js",
   "scripts": {
