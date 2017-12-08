@@ -6,10 +6,9 @@
   "main": "src/index.js",
   "scripts": {
     "clean": "rm -rf breadcrumbs/ buttons/ cards/ dropdowns/ editors/ errors/ formats/ forms/ lists/ modals/ navigation/ tables/ tabs/ tooltips/ utils/",
-    "lint": "eslint --max-warnings=0 .",
+    "lint": "eslint --max-warnings=0 src",
     "prebuild": "yarn run clean",
-    "build": "babel src/ --out-dir ./",
-    "install": "yarn run build"
+    "build": "babel src/ --out-dir ./dist"
   },
   "author": "",
   "license": "ISC",
