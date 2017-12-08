@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router';
 
@@ -22,3 +23,7 @@ export default function StyleguideIndex(props) {
     </div>
   );
 }
+
+StyleguideIndex.propTypes = {
+  children: PropTypes.node,
+};

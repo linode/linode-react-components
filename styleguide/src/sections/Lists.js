@@ -45,7 +45,11 @@ export default function Lists() {
               <p>List with selection, links, and actions example:</p>
               <Table
                 columns={[
-                  { cellComponent: CheckboxCell, headerClassName: 'CheckboxColumn', onChange: () => {} },
+                  {
+                    cellComponent: CheckboxCell,
+                    headerClassName: 'CheckboxColumn',
+                    onChange: () => {},
+                  },
                   {
                     className: 'LabelCell',
                     headerClassName: 'LabelColumn',

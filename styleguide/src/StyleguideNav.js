@@ -28,14 +28,14 @@ function createNavigationItems() {
   });
 }
 
-export function StyleguideNav(props) {
+export function StyleguideNav() {
   const path = location.pathname.match(/overview/) ? '/styleguide' : location.pathname;
   return (
     <VerticalNav>
       <VerticalNavSection
         title=""
         path={path}
-        navItems={navigationItems}
+        navItems={createNavigationItems()}
       />
     </VerticalNav>
   );
