@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { TableCell, CheckboxCell } from 'linode-components/tables/cells';
+import { TableCell, CheckboxCell } from './cells';
 
 
 export default class TableRow extends Component {

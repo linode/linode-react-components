@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Checkbox } from 'linode-components/forms';
+import { Checkbox } from '../../forms';
 import TableCell from './TableCell';
 
 

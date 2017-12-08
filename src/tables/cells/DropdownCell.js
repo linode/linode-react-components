@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Dropdown } from 'linode-components/dropdowns';
+import { Dropdown } from '../../dropdowns';
 
 import TableCell from './TableCell';
 
