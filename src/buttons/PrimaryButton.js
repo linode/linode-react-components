@@ -16,7 +16,7 @@ export default function PrimaryButton(props) {
   return (
     <div className={`PrimaryButton ${props.className} ${props.buttonClass}`}>
       {/* TODO: add appropriate analytics items */}
-      <Dropdown groups={groups} />
+      <Dropdown disabled={props.disabled} groups={groups} />
     </div>
   );
 }
@@ -28,6 +28,7 @@ PrimaryButton.propTypes = {
   to: PropTypes.string,
   buttonClass: PropTypes.string,
   className: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 PrimaryButton.defaultProps = {

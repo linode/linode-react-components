@@ -27,7 +27,7 @@ function PrimaryButton(props) {
   return _react2.default.createElement(
     'div',
     { className: 'PrimaryButton ' + props.className + ' ' + props.buttonClass },
-    _react2.default.createElement(_dropdowns.Dropdown, { groups: groups })
+    _react2.default.createElement(_dropdowns.Dropdown, { disabled: props.disabled, groups: groups })
   );
 }
 
@@ -37,7 +37,8 @@ PrimaryButton.propTypes = {
   onClick: _propTypes2.default.func,
   to: _propTypes2.default.string,
   buttonClass: _propTypes2.default.string,
-  className: _propTypes2.default.string
+  className: _propTypes2.default.string,
+  disabled: _propTypes2.default.bool
 };
 
 PrimaryButton.defaultProps = {
