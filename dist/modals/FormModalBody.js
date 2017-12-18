@@ -8,10 +8,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _lodash = require('lodash');
-
-var _lodash2 = _interopRequireDefault(_lodash);
-
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -19,6 +15,10 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _isEmpty = require('lodash/isEmpty');
+
+var _isEmpty2 = _interopRequireDefault(_isEmpty);
 
 var _buttons = require('../buttons');
 
@@ -90,7 +90,7 @@ var FormModalBody = function (_Component) {
 
       // This may not be needed. No one may send errors to props, but just in case.
 
-      var errors = _lodash2.default.isEmpty(propsErrors) ? stateErrors : propsErrors;
+      var errors = (0, _isEmpty2.default)(propsErrors) ? stateErrors : propsErrors;
 
       var analytics = _extends({}, this.props.analytics, {
         type: 'modal'

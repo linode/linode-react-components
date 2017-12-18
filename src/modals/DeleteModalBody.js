@@ -1,6 +1,8 @@
-import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
+import groupBy from 'lodash/groupBy';
+import map from 'lodash/map';
+import capitalize from 'lodash/capitalize';
 
 import FormModalBody from './FormModalBody';
 import { ScrollingList } from '../lists';
@@ -16,8 +18,8 @@ export default function DeleteModalBody(props) {
     deleteActionPending,
   } = props;
 
-  const groupedItems = _.groupBy(items);
-  const groupedDOMItems = _.map(groupedItems, function (items, label) {
+  const groupedItems = groupBy(items);
+  const groupedDOMItems = map(groupedItems, function (items, label) {
     if (items.length > 1) {
       return <span><strong>{label}</strong> (x{items.length})</span>;
     }
@@ -56,8 +58,8 @@ export default function DeleteModalBody(props) {
   return (
     <FormModalBody
       className="DeleteModalBody"
-      buttonText={_.capitalize(deleteAction)}
-      buttonDisabledText={_.capitalize(deleteActionPending)}
+      buttonText={capitalize(deleteAction)}
+      buttonDisabledText={capitalize(deleteActionPending)}
       onSubmit={onSubmit}
       onCancel={onCancel}
       analytics={analytics}

@@ -5,9 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = FormGroupError;
 
-var _lodash = require('lodash');
+var _flatten = require('lodash/flatten');
 
-var _lodash2 = _interopRequireDefault(_lodash);
+var _flatten2 = _interopRequireDefault(_flatten);
 
 var _propTypes = require('prop-types');
 
@@ -29,7 +29,7 @@ function FormGroupError(props) {
   var baseClassName = className + ' FormGroupError';
   var fullClassName = inline ? baseClassName : baseClassName + ' FormGroupError--block';
   var names = Array.isArray(name) ? name : [name];
-  var fieldErrors = _lodash2.default.flatten(names.map(function (name) {
+  var fieldErrors = (0, _flatten2.default)(names.map(function (name) {
     return errors[name + (crumbs ? '.' + crumbs : '')] || [];
   }));
   if (fieldErrors && fieldErrors.length) {

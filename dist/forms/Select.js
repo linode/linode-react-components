@@ -10,9 +10,9 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _lodash = require('lodash');
+var _omit = require('lodash/omit');
 
-var _lodash2 = _interopRequireDefault(_lodash);
+var _omit2 = _interopRequireDefault(_omit);
 
 var _propTypes = require('prop-types');
 
@@ -176,7 +176,7 @@ var Select = function (_Component) {
         _react2.default.createElement(_reactSelectPlus2.default, _extends({
           clearable: false,
           name: this.props.name + '-internal'
-        }, _lodash2.default.omit(this.props, ['className', 'id', 'name']), {
+        }, (0, _omit2.default)(this.props, ['className', 'id', 'name']), {
           value: value,
           onChange: this.onChange
         })),

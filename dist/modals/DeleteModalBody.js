@@ -5,10 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = DeleteModalBody;
 
-var _lodash = require('lodash');
-
-var _lodash2 = _interopRequireDefault(_lodash);
-
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -16,6 +12,18 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _groupBy = require('lodash/groupBy');
+
+var _groupBy2 = _interopRequireDefault(_groupBy);
+
+var _map = require('lodash/map');
+
+var _map2 = _interopRequireDefault(_map);
+
+var _capitalize = require('lodash/capitalize');
+
+var _capitalize2 = _interopRequireDefault(_capitalize);
 
 var _FormModalBody = require('./FormModalBody');
 
@@ -34,8 +42,8 @@ function DeleteModalBody(props) {
       deleteActionPending = props.deleteActionPending;
 
 
-  var groupedItems = _lodash2.default.groupBy(items);
-  var groupedDOMItems = _lodash2.default.map(groupedItems, function (items, label) {
+  var groupedItems = (0, _groupBy2.default)(items);
+  var groupedDOMItems = (0, _map2.default)(groupedItems, function (items, label) {
     if (items.length > 1) {
       return _react2.default.createElement(
         'span',
@@ -119,8 +127,8 @@ function DeleteModalBody(props) {
     _FormModalBody2.default,
     {
       className: 'DeleteModalBody',
-      buttonText: _lodash2.default.capitalize(deleteAction),
-      buttonDisabledText: _lodash2.default.capitalize(deleteActionPending),
+      buttonText: (0, _capitalize2.default)(deleteAction),
+      buttonDisabledText: (0, _capitalize2.default)(deleteActionPending),
       onSubmit: onSubmit,
       onCancel: onCancel,
       analytics: analytics

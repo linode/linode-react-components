@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import flatten from 'lodash/flatten';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -7,7 +7,7 @@ export default function FormGroupError(props) {
   const baseClassName = `${className} FormGroupError`;
   const fullClassName = inline ? baseClassName : `${baseClassName} FormGroupError--block`;
   const names = Array.isArray(name) ? name : [name];
-  const fieldErrors = _.flatten(names.map(function (name) {
+  const fieldErrors = flatten(names.map(function (name) {
     return errors[name + (crumbs ? `.${crumbs}` : '')] || [];
   }));
   if (fieldErrors && fieldErrors.length) {

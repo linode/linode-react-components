@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import flatten from 'lodash/flatten';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -8,7 +8,7 @@ export default function FormGroup(props) {
   if (errors && name) {
     const names = Array.isArray(name) ? name : [name];
     const crumb = (crumbs ? `.${crumbs}` : '');
-    fieldErrors = _.flatten(names.map(function (name) {
+    fieldErrors = flatten(names.map(function (name) {
       return errors[`${name}${crumb}`] || [];
     }));
   }

@@ -1,7 +1,7 @@
-import _ from 'lodash';
+
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-
+import isEmpty from 'lodash/isEmpty';
 import { CancelButton } from '../buttons';
 import { Form, FormSummary, SubmitButton } from '../forms';
 import { EmitEvent, MODAL_CANCEL } from '../utils';
@@ -31,7 +31,7 @@ export default class FormModalBody extends Component {
     const { loading, errors: stateErrors = {} } = this.state;
 
     // This may not be needed. No one may send errors to props, but just in case.
-    const errors = _.isEmpty(propsErrors) ? stateErrors : propsErrors;
+    const errors = isEmpty(propsErrors) ? stateErrors : propsErrors;
 
     const analytics = {
       ...this.props.analytics,

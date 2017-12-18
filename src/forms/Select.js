@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import omit from 'lodash/omit';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import VendorSelect from 'react-select-plus';
@@ -104,7 +104,7 @@ export default class Select extends Component {
         <VendorSelect
           clearable={false}
           name={`${this.props.name}-internal`}
-          {..._.omit(this.props, ['className', 'id', 'name'])}
+          {...omit(this.props, ['className', 'id', 'name'])}
           value={value}
           onChange={this.onChange}
         />

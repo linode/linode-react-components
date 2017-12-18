@@ -5,9 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = FormGroup;
 
-var _lodash = require('lodash');
+var _flatten = require('lodash/flatten');
 
-var _lodash2 = _interopRequireDefault(_lodash);
+var _flatten2 = _interopRequireDefault(_flatten);
 
 var _propTypes = require('prop-types');
 
@@ -28,7 +28,7 @@ function FormGroup(props) {
   if (errors && name) {
     var names = Array.isArray(name) ? name : [name];
     var crumb = crumbs ? '.' + crumbs : '';
-    fieldErrors = _lodash2.default.flatten(names.map(function (name) {
+    fieldErrors = (0, _flatten2.default)(names.map(function (name) {
       return errors['' + name + crumb] || [];
     }));
   }
