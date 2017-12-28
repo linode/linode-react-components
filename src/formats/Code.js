@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import Highlight from 'react-highlight';
 import ClipboardButton from 'react-clipboard.js';
 
 
@@ -50,9 +49,9 @@ export default class Code extends Component {
     // TODO: replace this Highlight component... It's tiny and terrible.
     return (
       <div className="Code">
-        <Highlight className={`language-${languageName} hljs`}>
+        <code>
           {example}
-        </Highlight>
+        </code>
         {clipboardButton}
       </div>
     );

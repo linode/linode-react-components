@@ -14,10 +14,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactHighlight = require('react-highlight');
-
-var _reactHighlight2 = _interopRequireDefault(_reactHighlight);
-
 var _reactClipboard = require('react-clipboard.js');
 
 var _reactClipboard2 = _interopRequireDefault(_reactClipboard);
@@ -88,8 +84,8 @@ var Code = function (_Component) {
         'div',
         { className: 'Code' },
         _react2.default.createElement(
-          _reactHighlight2.default,
-          { className: 'language-' + languageName + ' hljs' },
+          'code',
+          null,
           example
         ),
         clipboardButton
