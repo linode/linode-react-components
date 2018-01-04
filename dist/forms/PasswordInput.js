@@ -17,13 +17,17 @@ var _Input = require('./Input');
 
 var _Input2 = _interopRequireDefault(_Input);
 
+var _zxcvbn = require('zxcvbn');
+
+var _zxcvbn2 = _interopRequireDefault(_zxcvbn);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var str = ['an extremely weak', 'a very weak', 'a weak', 'a strong', 'a very strong'];
 
 function PasswordInput(props) {
   // eslint-disable-next-line no-undef
-  var strength = zxcvbn(props.value);
+  var strength = (0, _zxcvbn2.default)(props.value);
 
   return _react2.default.createElement(
     'div',

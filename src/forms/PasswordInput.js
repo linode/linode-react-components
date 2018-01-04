@@ -3,6 +3,7 @@ import React from 'react';
 
 import Input from './Input';
 
+import zxcvbn from 'zxcvbn';
 
 const str = ['an extremely weak', 'a very weak', 'a weak', 'a strong', 'a very strong'];
 

@@ -8,7 +8,8 @@
     "clean": "rm -rf dist",
     "lint": "eslint --max-warnings=0 src",
     "prebuild": "yarn run clean",
-    "build": "babel src/ --out-dir ./dist"
+    "build": "babel src/ --out-dir ./dist",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -27,7 +28,8 @@
     "react-router-dom": "^4.1.1",
     "react-select-plus": "^1.0.0-rc.5",
     "react-tabs": "^0.7.0",
-    "react-tooltip": "^3.3.0"
+    "react-tooltip": "^3.3.0",
+    "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -36,11 +38,19 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-15": "^1.0.5",
     "eslint": "^2.13.1",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-babel": "^3.3.0",
     "eslint-plugin-import": "^1.9.2",
     "eslint-plugin-jsx-a11y": "^1.5.5",
-    "eslint-plugin-react": "^5.2.2"
+    "eslint-plugin-react": "^5.2.2",
+    "jest": "^21.2.1",
+    "react-test-renderer": "15.5"
+  },
+  "jest": {
+    "testRegex": "src/.*\\.spec\\.js$",
+    "setupTestFrameworkScriptFile": "<rootDir>/test.setup.js"
   }
 }
