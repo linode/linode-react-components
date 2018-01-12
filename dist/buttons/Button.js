@@ -13,7 +13,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouter = require('react-router');
+var _reactRouterDom = require('react-router-dom');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40,7 +40,7 @@ function Button(props) {
   }
 
   return to ? _react2.default.createElement(
-    _reactRouter.Link,
+    _reactRouterDom.Link,
     {
       className: classes,
       id: id,
