@@ -15,7 +15,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactTabs = require('react-tabs');
 
-var _reactRouter = require('react-router');
+var _reactRouterDom = require('react-router-dom');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -66,7 +66,7 @@ function Tabs(props) {
             }
           },
           tab.link ? _react2.default.createElement(
-            _reactRouter.Link,
+            _reactRouterDom.Link,
             { to: tab.link },
             tab.name
           ) : tab.name
