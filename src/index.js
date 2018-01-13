@@ -86,3 +86,5 @@ export { ComingSoon } from './errors';
 export { Dropdown } from './dropdowns';
 
 export { Tooltip } from './tooltips';
+
+export { Breadcrumbs } from './breadcrumbs';

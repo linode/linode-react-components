@@ -471,3 +471,12 @@ Object.defineProperty(exports, 'Tooltip', {
     return _tooltips.Tooltip;
   }
 });
+
+var _breadcrumbs = require('./breadcrumbs');
+
+Object.defineProperty(exports, 'Breadcrumbs', {
+  enumerable: true,
+  get: function get() {
+    return _breadcrumbs.Breadcrumbs;
+  }
+});
