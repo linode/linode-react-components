@@ -14,10 +14,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactHighlight = require('react-highlight');
-
-var _reactHighlight2 = _interopRequireDefault(_reactHighlight);
-
 var _reactClipboard = require('react-clipboard.js');
 
 var _reactClipboard2 = _interopRequireDefault(_reactClipboard);
@@ -31,9 +27,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var DEFAULT_CLIPBOARD_ICON = 'fa-clipboard';
-var languageMap = {
-  curl: 'bash'
-};
 
 var Code = function (_Component) {
   _inherits(Code, _Component);
@@ -62,13 +55,9 @@ var Code = function (_Component) {
     value: function render() {
       var _props = this.props,
           example = _props.example,
-          language = _props.language,
           noclipboard = _props.noclipboard;
       var clipboardIcon = this.state.clipboardIcon;
 
-
-      var lowerCaseLanguage = language.toLowerCase();
-      var languageName = languageMap[lowerCaseLanguage] ? languageMap[lowerCaseLanguage] : lowerCaseLanguage;
 
       var clipboardButton = void 0;
       if (!noclipboard) {
@@ -83,13 +72,12 @@ var Code = function (_Component) {
         );
       }
 
-      // TODO: replace this Highlight component... It's tiny and terrible.
       return _react2.default.createElement(
         'div',
         { className: 'Code' },
         _react2.default.createElement(
-          _reactHighlight2.default,
-          { className: 'language-' + languageName + ' hljs' },
+          'code',
+          null,
           example
         ),
         clipboardButton
@@ -105,11 +93,9 @@ exports.default = Code;
 
 Code.propTypes = {
   example: _propTypes2.default.string,
-  language: _propTypes2.default.string,
   noclipboard: _propTypes2.default.bool
 };
 
 Code.defaultProps = {
-  noclipboard: false,
-  language: 'bash'
+  noclipboard: false
 };
