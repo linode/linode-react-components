@@ -4,5 +4,8 @@
     ],
     "plugins": [
         "babel-plugin-transform-class-properties"
+    ],
+    "ignore": [
+        "*.spec.js"
     ]
 }
