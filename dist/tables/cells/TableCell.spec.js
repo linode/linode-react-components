@@ -6,7 +6,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _enzyme = require('enzyme');
 
-var _linodeComponents = require('linode-components');
+var _TableCell = require('./TableCell');
+
+var _TableCell2 = _interopRequireDefault(_TableCell);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -14,7 +16,7 @@ describe('components/tables/cells/TableCell', function () {
   var tableCell = void 0;
 
   it('should render without error', function () {
-    var wrapper = (0, _enzyme.shallow)(_react2.default.createElement(_linodeComponents.TableCell, {
+    var wrapper = (0, _enzyme.shallow)(_react2.default.createElement(_TableCell2.default, {
       className: 'example',
       column: {},
       record: {}
@@ -24,7 +26,7 @@ describe('components/tables/cells/TableCell', function () {
   });
 
   it('should accept className from props', function () {
-    tableCell = (0, _enzyme.shallow)(_react2.default.createElement(_linodeComponents.TableCell, {
+    tableCell = (0, _enzyme.shallow)(_react2.default.createElement(_TableCell2.default, {
       className: 'example',
       column: {},
       record: {}
@@ -34,7 +36,7 @@ describe('components/tables/cells/TableCell', function () {
   });
 
   it('should accept a className from the column configuration', function () {
-    tableCell = (0, _enzyme.shallow)(_react2.default.createElement(_linodeComponents.TableCell, {
+    tableCell = (0, _enzyme.shallow)(_react2.default.createElement(_TableCell2.default, {
       column: {
         className: 'example'
       },
@@ -46,7 +48,7 @@ describe('components/tables/cells/TableCell', function () {
 
   it('should accept arbitrary child elements', function () {
     tableCell = (0, _enzyme.shallow)(_react2.default.createElement(
-      _linodeComponents.TableCell,
+      _TableCell2.default,
       {
         column: {
           className: 'example'
@@ -65,7 +67,7 @@ describe('components/tables/cells/TableCell', function () {
   });
 
   it('should render a child value from record dataKey lookup', function () {
-    tableCell = (0, _enzyme.shallow)(_react2.default.createElement(_linodeComponents.TableCell, {
+    tableCell = (0, _enzyme.shallow)(_react2.default.createElement(_TableCell2.default, {
       column: {
         dataKey: 'value'
       },
@@ -79,7 +81,7 @@ describe('components/tables/cells/TableCell', function () {
 
   it('should call an optional format fn to be used in value rendering', function () {
     var spy = jest.fn();
-    tableCell = (0, _enzyme.shallow)(_react2.default.createElement(_linodeComponents.TableCell, {
+    tableCell = (0, _enzyme.shallow)(_react2.default.createElement(_TableCell2.default, {
       column: {
         formatFn: spy
       },
@@ -90,7 +92,7 @@ describe('components/tables/cells/TableCell', function () {
   });
 
   it('should render children based on returned values from a format fn', function () {
-    tableCell = (0, _enzyme.shallow)(_react2.default.createElement(_linodeComponents.TableCell, {
+    tableCell = (0, _enzyme.shallow)(_react2.default.createElement(_TableCell2.default, {
       column: {
         dataKey: 'value',
         formatFn: function formatFn(children) {

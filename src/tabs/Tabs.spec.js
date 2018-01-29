@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import { mount } from 'enzyme';
 
 import Tabs from './Tabs';
+import { StaticRouter } from 'react-router-dom';
 
 describe('components/Tabs', async () => {
   // eslint-disable-next-line react/prefer-stateless-function
   class Test extends Component {
     render() {
-      // eslint-disable-next-line react/prop-types
-      return <Tabs tabs={this.props.tabs} onClick={this.props.onClick} />;
+      /* eslint-disable react/prop-types */
+      return (
+        <StaticRouter>
+          <Tabs tabs={this.props.tabs} onClick={this.props.onClick} />
+        </StaticRouter>
+      );
+      /* eslint-enable react/prop-types */
     }
   }
 
@@ -19,11 +25,10 @@ describe('components/Tabs', async () => {
 
   it('renders tabs', () => {
     const dispatch = jest.fn();
-    const page = mount(
-      <Test
-        dispatch={dispatch}
-        tabs={tabs}
-      />);
+    const page = mount(<Test
+      dispatch={dispatch}
+      tabs={tabs}
+    />);
 
     const tabComponents = page.find('Tabs').find('Tab');
     expect(tabComponents.length).toBe(tabs.length);

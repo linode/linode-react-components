@@ -8,7 +8,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _enzyme = require('enzyme');
 
-var _linodeComponents = require('linode-components');
+var _Tabs = require('./Tabs');
+
+var _Tabs2 = _interopRequireDefault(_Tabs);
+
+var _reactRouterDom = require('react-router-dom');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39,8 +43,13 @@ describe('components/Tabs', _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.m
             _createClass(Test, [{
               key: 'render',
               value: function render() {
-                // eslint-disable-next-line react/prop-types
-                return _react2.default.createElement(_linodeComponents.Tabs, { tabs: this.props.tabs, onClick: this.props.onClick });
+                /* eslint-disable react/prop-types */
+                return _react2.default.createElement(
+                  _reactRouterDom.StaticRouter,
+                  null,
+                  _react2.default.createElement(_Tabs2.default, { tabs: this.props.tabs, onClick: this.props.onClick })
+                );
+                /* eslint-enable react/prop-types */
               }
             }]);
 

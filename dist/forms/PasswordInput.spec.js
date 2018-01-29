@@ -6,7 +6,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _enzyme = require('enzyme');
 
-var _linodeComponents = require('linode-components');
+var _PasswordInput = require('./PasswordInput');
+
+var _PasswordInput2 = _interopRequireDefault(_PasswordInput);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15,7 +17,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 describe('components/forms/PasswordInput', function () {
   it('calls onChange when appropriate', function () {
     var change = jest.fn();
-    var input = (0, _enzyme.shallow)(_react2.default.createElement(_linodeComponents.PasswordInput, _defineProperty({
+    var input = (0, _enzyme.shallow)(_react2.default.createElement(_PasswordInput2.default, _defineProperty({
       onChange: change,
       name: 'password',
       value: ''
@@ -26,7 +28,7 @@ describe('components/forms/PasswordInput', function () {
   });
 
   it('should calculate password strength', function () {
-    var input = (0, _enzyme.mount)(_react2.default.createElement(_linodeComponents.PasswordInput, {
+    var input = (0, _enzyme.mount)(_react2.default.createElement(_PasswordInput2.default, {
       value: 'correct horse battery staple',
       onChange: function onChange() {},
       name: 'password'

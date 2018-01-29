@@ -6,15 +6,20 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _linodeComponents = require('linode-components');
+var _FormModalBody = require('./FormModalBody');
+
+var _FormModalBody2 = _interopRequireDefault(_FormModalBody);
+
+var _SubmitButton = require('../forms/SubmitButton');
+
+var _SubmitButton2 = _interopRequireDefault(_SubmitButton);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 describe('components/modal/FormModalBody', function () {
-
   it('renders customizable content', function () {
     var modal = (0, _enzyme.mount)(_react2.default.createElement(
-      _linodeComponents.FormModalBody,
+      _FormModalBody2.default,
       {
         buttonText: 'OK button text',
         onSubmit: function onSubmit() {},
@@ -27,7 +32,7 @@ describe('components/modal/FormModalBody', function () {
       )
     ));
     // Has a submit button/
-    expect(modal.find(_linodeComponents.SubmitButton).length).toBe(1);
+    expect(modal.find(_SubmitButton2.default).length).toBe(1);
     expect(modal.find('.bodytext').length).toBe(1);
   });
 
@@ -35,7 +40,7 @@ describe('components/modal/FormModalBody', function () {
     var onSubmit = jest.fn();
 
     var modal = (0, _enzyme.shallow)(_react2.default.createElement(
-      _linodeComponents.FormModalBody,
+      _FormModalBody2.default,
       {
         buttonText: 'OK button text',
         onSubmit: onSubmit,
@@ -54,7 +59,7 @@ describe('components/modal/FormModalBody', function () {
     var onCancel = jest.fn();
 
     var modal = (0, _enzyme.shallow)(_react2.default.createElement(
-      _linodeComponents.FormModalBody,
+      _FormModalBody2.default,
       {
         buttonText: 'OK button text',
         onSubmit: function onSubmit() {},
