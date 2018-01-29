@@ -1,13 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import Highlight from 'react-highlight';
 import ClipboardButton from 'react-clipboard.js';
 
 
 const DEFAULT_CLIPBOARD_ICON = 'fa-clipboard';
-const languageMap = {
-  curl: 'bash',
-};
 
 export default class Code extends Component {
   constructor() {
@@ -27,12 +23,8 @@ export default class Code extends Component {
   };
 
   render() {
-    const { example, language, noclipboard } = this.props;
+    const { example, noclipboard } = this.props;
     const { clipboardIcon } = this.state;
-
-    const lowerCaseLanguage = language.toLowerCase();
-    const languageName = languageMap[lowerCaseLanguage] ?
-      languageMap[lowerCaseLanguage] : lowerCaseLanguage;
 
     let clipboardButton;
     if (!noclipboard) {
@@ -47,12 +39,9 @@ export default class Code extends Component {
       );
     }
 
-    // TODO: replace this Highlight component... It's tiny and terrible.
     return (
       <div className="Code">
-        <Highlight className={`language-${languageName} hljs`}>
-          {example}
-        </Highlight>
+        <code>{example}</code>
         {clipboardButton}
       </div>
     );
@@ -61,11 +50,9 @@ export default class Code extends Component {
 
 Code.propTypes = {
   example: PropTypes.string,
-  language: PropTypes.string,
   noclipboard: PropTypes.bool,
 };
 
 Code.defaultProps = {
   noclipboard: false,
-  language: 'bash',
 };

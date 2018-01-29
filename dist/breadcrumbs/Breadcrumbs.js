@@ -13,7 +13,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouter = require('react-router');
+var _reactRouterDom = require('react-router-dom');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51,7 +51,7 @@ function Breadcrumbs(props) {
               'div',
               { className: 'Breadcrumbs-crumbLink' },
               _react2.default.createElement(
-                _reactRouter.Link,
+                _reactRouterDom.Link,
                 { to: to },
                 label
               )
