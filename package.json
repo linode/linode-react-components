@@ -23,8 +23,7 @@
     "react-router-dom": "^4.2.2",
     "react-select-plus": "^1.0.0-rc.5",
     "react-tabs": "^2.1.1",
-    "react-tooltip": "^3.3.0",
-    "zxcvbn": "^4.4.2"
+    "react-tooltip": "^3.3.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

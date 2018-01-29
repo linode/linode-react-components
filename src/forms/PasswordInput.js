@@ -1,39 +1,48 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import isNumber from 'lodash/isNumber';
+import isEmpty from 'lodash/isEmpty';
 
 import Input from './Input';
 
-import zxcvbn from 'zxcvbn';
-
 const str = ['an extremely weak', 'a very weak', 'a weak', 'a strong', 'a very strong'];
 
-export default function PasswordInput(props) {
-  // eslint-disable-next-line no-undef
-  const strength = zxcvbn(props.value);
+const PasswordStrength = ({ strength }) => {
+  return [
+    <div className={`PasswordInput-strength PasswordInput-strength--${strength}`}>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>,
+    <small className="PasswordInput-strength-text">This is {str[strength]} password.</small>,
+  ];
+};
 
+export default function PasswordInput({
+  name,
+  className,
+  disabled,
+  onChange,
+  id,
+  strength,
+  value,
+}) {
+  const showStrength = !isEmpty(value) && isNumber(strength);
+  
   return (
-    <div className={`PasswordInput ${props.className}`}>
+    <div className={`PasswordInput ${className}`}>
       <Input
-        value={props.value}
-        name={props.name}
+        value={value}
+        name={name}
         className="PasswordInput-input"
-        onChange={props.onChange}
+        onChange={onChange}
         autoComplete="off"
         type="password"
-        disabled={props.disabled}
-        id={props.id}
+        disabled={disabled}
+        id={id}
       />
-      <div className={`PasswordInput-strength PasswordInput-strength--${strength.score}`}>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      {props.value === '' ? null : (
-        <small className="PasswordInput-strength-text">
-         This is {str[strength.score]} password.
-        </small>
-       )}
+      {showStrength && <PasswordStrength strength={strength} />}
     </div>
   );
 }
@@ -48,6 +57,7 @@ PasswordInput.propTypes = {
   disabled: PropTypes.bool,
   id: PropTypes.string,
   className: PropTypes.string,
+  strength: PropTypes.number,
 };
 
 PasswordInput.defaultProps = {
