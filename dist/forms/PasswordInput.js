@@ -86,7 +86,7 @@ PasswordInput.propTypes = {
   disabled: _propTypes2.default.bool,
   id: _propTypes2.default.string,
   className: _propTypes2.default.string,
-  strength: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.bool])
+  strength: _propTypes2.default.number
 };
 
 PasswordInput.defaultProps = {

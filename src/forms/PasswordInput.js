@@ -57,10 +57,7 @@ PasswordInput.propTypes = {
   disabled: PropTypes.bool,
   id: PropTypes.string,
   className: PropTypes.string,
-  strength: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.bool,
-  ]),
+  strength: PropTypes.number,
 };
 
 PasswordInput.defaultProps = {
