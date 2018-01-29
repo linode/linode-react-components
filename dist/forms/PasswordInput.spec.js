@@ -31,7 +31,8 @@ describe('components/forms/PasswordInput', function () {
     var input = (0, _enzyme.mount)(_react2.default.createElement(_PasswordInput2.default, {
       value: 'correct horse battery staple',
       onChange: function onChange() {},
-      name: 'password'
+      name: 'password',
+      strength: 4
     }));
 
     expect(input.find('.PasswordInput-strength--4').length).toBe(1);
