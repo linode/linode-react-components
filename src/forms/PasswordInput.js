@@ -29,7 +29,7 @@ export default function PasswordInput({
   value,
 }) {
   const showStrength = !isEmpty(value) && isNumber(strength);
-  
+
   return (
     <div className={`PasswordInput ${className}`}>
       <Input

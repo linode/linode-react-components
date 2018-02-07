@@ -8,7 +8,7 @@
     "clean": "rm -rf dist",
     "lint": "eslint --max-warnings=0 src",
     "prebuild": "yarn run clean",
-    "build": "babel src/ --out-dir ./dist --ignore '**/*.test.js'",
+    "build": "babel src/ --out-dir ./dist --ignore '**/*.spec.js'",
     "test": "jest"
   },
   "author": "",
