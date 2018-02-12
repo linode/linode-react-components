@@ -5,11 +5,9 @@ import Error from './Error';
 
 describe('components/Error', () => {
   it('should render without error', () => {
-    const wrapper = shallow(
+    shallow(
       <Error status={404} />
     );
-
-    expect(wrapper).toMatchSnapshot();
   });
 
   it('renders a 404 component', () => {

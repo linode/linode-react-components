@@ -6,7 +6,7 @@ import Button from '../buttons/Button';
 
 describe('components/Dropdown', () => {
   it('should render without error', () => {
-    const wrapper = shallow(
+    shallow(
       <Dropdown
         groups={[
           { elements: [{ action: () => { }, name: 'Drew' }] },
@@ -19,8 +19,6 @@ describe('components/Dropdown', () => {
         ]}
       />
     );
-
-    expect(wrapper).toMatchSnapshot();
   });
 
   it('renders dropdown component 2', () => {
