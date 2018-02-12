@@ -5,14 +5,12 @@ import MassEditDropdown from './MassEditDropdown';
 
 describe('components/lists/MassEditDropdown', function () {
   it('should render without error', () => {
-    const wrapper = shallow(
+    shallow(
       <MassEditDropdown
         groups={[{ elements: [{ name: 'Test', action: () => { } }] }]}
         onChange={() => { }}
       />
     );
-
-    expect(wrapper).toMatchSnapshot();
   });
 
   it('should render a checkbox and a dropdown', function () {

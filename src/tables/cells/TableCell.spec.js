@@ -8,15 +8,13 @@ describe('components/tables/cells/TableCell', function () {
 
 
   it('should render without error', () => {
-    const wrapper = shallow(
+    shallow(
       <TableCell
         className="example"
         column={{}}
         record={{}}
       />
     );
-
-    expect(wrapper).toMatchSnapshot();
   });
 
   it('should accept className from props', function () {
