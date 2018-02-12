@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import isNumber from 'lodash/isNumber';
-import isEmpty from 'lodash/isEmpty';
+import isNull from 'lodash/isNull';
 
 import Input from './Input';
 
@@ -28,7 +27,7 @@ export default function PasswordInput({
   strength,
   value,
 }) {
-  const showStrength = !isEmpty(value) && isNumber(strength);
+  const showStrength = !isNull(value);
 
   return (
     <div className={`PasswordInput ${className}`}>

@@ -13,13 +13,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _isNumber = require('lodash/isNumber');
+var _isNull = require('lodash/isNull');
 
-var _isNumber2 = _interopRequireDefault(_isNumber);
-
-var _isEmpty = require('lodash/isEmpty');
-
-var _isEmpty2 = _interopRequireDefault(_isEmpty);
+var _isNull2 = _interopRequireDefault(_isNull);
 
 var _Input = require('./Input');
 
@@ -57,7 +53,7 @@ function PasswordInput(_ref2) {
       strength = _ref2.strength,
       value = _ref2.value;
 
-  var showStrength = !(0, _isEmpty2.default)(value) && (0, _isNumber2.default)(strength);
+  var showStrength = !(0, _isNull2.default)(value);
 
   return _react2.default.createElement(
     'div',
