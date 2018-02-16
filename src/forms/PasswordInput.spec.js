@@ -25,6 +25,7 @@ describe('components/forms/PasswordInput', () => {
         value="correct horse battery staple"
         onChange={() => {}}
         name="password"
+        strength={4}
       />
     );
 

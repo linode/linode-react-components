@@ -13,50 +13,62 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _isNull = require('lodash/isNull');
+
+var _isNull2 = _interopRequireDefault(_isNull);
+
 var _Input = require('./Input');
 
 var _Input2 = _interopRequireDefault(_Input);
-
-var _zxcvbn = require('zxcvbn');
-
-var _zxcvbn2 = _interopRequireDefault(_zxcvbn);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var str = ['an extremely weak', 'a very weak', 'a weak', 'a strong', 'a very strong'];
 
-function PasswordInput(props) {
-  // eslint-disable-next-line no-undef
-  var strength = (0, _zxcvbn2.default)(props.value);
+var PasswordStrength = function PasswordStrength(_ref) {
+  var strength = _ref.strength;
+
+  return [_react2.default.createElement(
+    'div',
+    { className: 'PasswordInput-strength PasswordInput-strength--' + strength },
+    _react2.default.createElement('span', null),
+    _react2.default.createElement('span', null),
+    _react2.default.createElement('span', null),
+    _react2.default.createElement('span', null)
+  ), _react2.default.createElement(
+    'small',
+    { className: 'PasswordInput-strength-text' },
+    'This is ',
+    str[strength],
+    ' password.'
+  )];
+};
+
+function PasswordInput(_ref2) {
+  var name = _ref2.name,
+      className = _ref2.className,
+      disabled = _ref2.disabled,
+      onChange = _ref2.onChange,
+      id = _ref2.id,
+      strength = _ref2.strength,
+      value = _ref2.value;
+
+  var showStrength = !(0, _isNull2.default)(value);
 
   return _react2.default.createElement(
     'div',
-    { className: 'PasswordInput ' + props.className },
+    { className: 'PasswordInput ' + className },
     _react2.default.createElement(_Input2.default, {
-      value: props.value,
-      name: props.name,
+      value: value,
+      name: name,
       className: 'PasswordInput-input',
-      onChange: props.onChange,
+      onChange: onChange,
       autoComplete: 'off',
       type: 'password',
-      disabled: props.disabled,
-      id: props.id
+      disabled: disabled,
+      id: id
     }),
-    _react2.default.createElement(
-      'div',
-      { className: 'PasswordInput-strength PasswordInput-strength--' + strength.score },
-      _react2.default.createElement('span', null),
-      _react2.default.createElement('span', null),
-      _react2.default.createElement('span', null),
-      _react2.default.createElement('span', null)
-    ),
-    props.value === '' ? null : _react2.default.createElement(
-      'small',
-      { className: 'PasswordInput-strength-text' },
-      'This is ',
-      str[strength.score],
-      ' password.'
-    )
+    showStrength && _react2.default.createElement(PasswordStrength, { strength: strength })
   );
 }
 
@@ -69,7 +81,8 @@ PasswordInput.propTypes = {
   passwordType: _propTypes2.default.string,
   disabled: _propTypes2.default.bool,
   id: _propTypes2.default.string,
-  className: _propTypes2.default.string
+  className: _propTypes2.default.string,
+  strength: _propTypes2.default.number
 };
 
 PasswordInput.defaultProps = {
